@@ -1,0 +1,34 @@
+diff --git a/keyboards/redox_w/redox_w.h b/keyboards/redox_w/redox_w.h
+index 3adcb121d..f8cd6412b 100644
+--- a/keyboards/redox_w/redox_w.h
++++ b/keyboards/redox_w/redox_w.h
+@@ -5,21 +5,17 @@
+ #include "backlight.h"
+ #include <stddef.h>
+ 
+-#define red_led_off   PORTF |= (1<<5)
+-#define red_led_on    PORTF &= ~(1<<5)
+-#define blu_led_off   PORTF |= (1<<4)
+-#define blu_led_on    PORTF &= ~(1<<4)
++#define blu_led_off   PORTF |= (1<<5)
++#define blu_led_on    PORTF &= ~(1<<5)
++#define ylo_led_off   PORTF |= (1<<4)
++#define ylo_led_on    PORTF &= ~(1<<4)
+ #define grn_led_off   PORTD |= (1<<1)
+ #define grn_led_on    PORTD &= ~(1<<1)
+ 
+-#define set_led_off     red_led_off; grn_led_off; blu_led_off
+-#define set_led_red     red_led_on;  grn_led_off; blu_led_off
+-#define set_led_blue    red_led_off; grn_led_off; blu_led_on
+-#define set_led_green   red_led_off; grn_led_on;  blu_led_off
+-#define set_led_yellow  red_led_on;  grn_led_on;  blu_led_off
+-#define set_led_magenta red_led_on;  grn_led_off; blu_led_on
+-#define set_led_cyan    red_led_off; grn_led_on;  blu_led_on
+-#define set_led_white   red_led_on;  grn_led_on;  blu_led_on
++#define set_led_off     blu_led_off; grn_led_off; ylo_led_off
++#define set_led_blue    blu_led_on;  grn_led_off; ylo_led_off
++#define set_led_green   blu_led_off; grn_led_on;  ylo_led_off
++#define set_led_yellow  blu_led_off; grn_led_off; ylo_led_on
+ 
+ // This a shortcut to help you visually see your layout.
+ // The first section contains all of the arguements

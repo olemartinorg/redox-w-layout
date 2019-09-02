@@ -1,0 +1,17 @@
+diff --git a/keyboards/redox_w/config.h b/keyboards/redox_w/config.h
+index 349185ed3..8528d4beb 100644
+--- a/keyboards/redox_w/config.h
++++ b/keyboards/redox_w/config.h
+@@ -23,9 +23,9 @@
+ #define VENDOR_ID       0xFEED
+ #define PRODUCT_ID      0x6060
+ #define DEVICE_VER      0x0001
+-#define MANUFACTURER    Mattia Dal Ben
+-#define PRODUCT         Redox_wireless
+-#define DESCRIPTION     q.m.k. keyboard firmware for Redox-w
++#define MANUFACTURER    olemartinorg
++#define PRODUCT         redox_w
++#define DESCRIPTION     q.m.k. firmware
+ 
+ /* key matrix size */
+ #define MATRIX_ROWS 5
