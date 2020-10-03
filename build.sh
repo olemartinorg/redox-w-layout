@@ -8,5 +8,5 @@ fi
 
 cd origin/
 make redox_w:olemartinorg:avrdude
-mv redox_w_olemartinorg.hex ../
+mv -f redox_w_olemartinorg.hex ../
 cd ..
