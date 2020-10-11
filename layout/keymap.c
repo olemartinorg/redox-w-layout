@@ -14,7 +14,8 @@ enum custom_keycodes {
   M_SHFUNC,
   M_EMAILD,
   M_FATARR,
-  M_ACC_E
+  M_ACC_E,
+  M_SEMCOL,
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -115,6 +116,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_code(KC_LSFT);
       }
       break;
+    case M_SEMCOL:
+      if (record->event.pressed) {
+        register_code(KC_LSFT);
+        tap_code(KC_COMM);
+        unregister_code(KC_LSFT);
+      }
+      break;
   }
   return true;
 };
@@ -129,13 +137,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_GESC ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,                                            KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,NO_APOS ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LALT ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    ,KC_TAB  ,                          KC_TAB  ,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,NO_AA   ,
+     KC_LALT ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    ,KC_TAB  ,                          XXXXXXX ,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,NO_AA   ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LCTL ,KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G    ,KC_DEL  ,                          KC_BSPC ,KC_H    ,KC_J    ,KC_K    ,KC_L    ,NO_OSLH ,NO_AE   ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT ,KC_Z    ,KC_X    ,KC_C    ,KC_V    ,KC_B    ,KC_HOME ,KC_END  ,        M_AT    ,KC_RALT ,KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,NO_MINS ,KC_RCTL ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     MO(2)   ,NO_LESS ,XXXXXXX ,XXXXXXX ,     MO(2)   ,    MO(1)   ,SUPER   ,        KC_ENT  ,KC_SPC  ,    MO(2)   ,     XXXXXXX ,NO_PLUS ,BAKSLH  ,NO_QUOT
+     MO(2)   ,NO_LESS ,XXXXXXX ,XXXXXXX ,     KC_TAB  ,    MO(1)   ,SUPER   ,        KC_ENT  ,KC_SPC  ,    KC_TAB  ,     XXXXXXX ,NO_PLUS ,BAKSLH  ,NO_QUOT
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
@@ -143,7 +151,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
      NO_PIPE ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F4   ,KC_F5   ,                                            KC_F6   ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F10  ,_______ ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_MPRV ,KC_MPLY ,KC_MNXT ,M_DOLLAR,_______ ,KC_F11  ,                          KC_F12  ,KC_PGUP ,KC_VOLD ,KC_UP   ,KC_VOLU ,_______ ,_______ ,
+     _______ ,KC_MPRV ,KC_MPLY ,KC_MNXT ,M_DOLLAR,M_SEMCOL,KC_F11  ,                          KC_F12  ,KC_PGUP ,KC_VOLD ,KC_UP   ,KC_VOLU ,_______ ,_______ ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______ ,M_PARENS,M_SQBRKT,M_CURLBT,M_CROCS ,M_SQUOT ,_______ ,                          _______ ,KC_PGDN ,KC_LEFT ,KC_DOWN ,KC_RIGHT,_______ ,_______ ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
